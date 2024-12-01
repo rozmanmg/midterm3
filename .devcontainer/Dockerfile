@@ -19,7 +19,7 @@ RUN su - ${USERNAME} -c "mkdir -p ~/.julia/config \
 && wget --no-check-certificate ${URL}/sample.startup.jl -O ~/.julia/config/startup.jl"
 
 # (Pre)install selected Julia packages.
-RUN su - ${USERNAME} -c "julia -e 'ENV[\"PYTHON\"]=\"\"; using Pkg; Pkg.activate(temp=true); Pkg.add([\"IJulia\", \"PyPlot\", \"OrdinaryDiffEqTsit5\", \"CSV\", \"DataFrames\"]); using PyPlot'"
+RUN su - ${USERNAME} -c "julia -e 'ENV[\"PYTHON\"]=\"\"; using Pkg; Pkg.activate(temp=true); Pkg.add([\"IJulia\", \"PyPlot\", \"OrdinaryDiffEqTsit5\", \"CSV\", \"DataFrames\", \"ProgressMeter\"]); using PyPlot'"
 # RUN su - ${USERNAME} -c "julia -e 'ENV[\"PYTHON\"]=\"\"; using Pkg; Pkg.activate(temp=true); Pkg.add([\"IJulia\", \"PyPlot\"])'"
 
 # Disable Jupyter annoyances
