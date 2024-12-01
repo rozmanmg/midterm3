@@ -1,0 +1,20 @@
+{
+  "build": { "dockerfile": "Dockerfile" },
+
+  // Increase disk space
+  // "hostRequirements": {
+   // "cpus": 8,
+   // "memory": "8gb",
+   // "storage": "64gb"
+  // },
+  
+  // Free some disk space
+  // "initializeCommand": "docker system prune --all --force",
+  
+  // Use 'postCreateCommand' to run commands after the container is created. 
+  // The action below is taking place in the /workspace/<github-repo-name> folder. 
+  // The Dockerfile cannot be used for this part of the container setup since 
+  // it runs before the /workspace folder is mounted and therefore does not 
+  // have access to files in the /workspace/<github-repo-name> folder. 
+  "postCreateCommand": "julia -e 'using Pkg; Pkg.activate(\".\"); Pkg.instantiate()'",
+}
